@@ -1,0 +1,19 @@
+<div class="task-container">
+    <h2>Task List</h2>
+    <app-task-input (taskAdded)="onTaskAdded($event)"></app-task-input>
+
+    <div class="task-list">
+        <div *ngFor="let task of tasks" class="task-item">
+            <div *ngIf="editingTask?.id !== task.id">
+                {{ task.name }}
+                <button (click)="startEditing(task)" class="btn btn-sm btn-primary">Edit</button>
+                <button (click)="onTaskDeleted(task.id)" class="btn btn-sm btn-danger">Delete</button>
+            </div>
+            <div *ngIf="editingTask?.id === task.id">
+                <input type="text" [(ngModel)]="editingTask.name" class="form-control">
+                <button (click)="onTaskEdited(editingTask)" class="btn btn-sm btn-success">Save</button>
+                <button (click)="editingTask = null" class="btn btn-sm btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
