@@ -10,10 +10,11 @@
                 <button (click)="onTaskDeleted(task.id)" class="btn btn-sm btn-danger">Delete</button>
             </div>
             <div *ngIf="editingTask?.id === task.id">
-                <input type="text" [(ngModel)]="editingTask.name" class="form-control">
-                <button (click)="onTaskEdited(editingTask)" class="btn btn-sm btn-success">Save</button>
+                <input type="text" [(ngModel)]="editingTask!.name" class="form-control">
+                <button (click)="onTaskEdited(editingTask!)" class="btn btn-sm btn-success">Save</button>
                 <button (click)="editingTask = null" class="btn btn-sm btn-secondary">Cancel</button>
             </div>
         </div>
     </div>
 </div>
+

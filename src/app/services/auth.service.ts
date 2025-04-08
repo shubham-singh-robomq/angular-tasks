@@ -17,6 +17,7 @@ export class AuthService {
 
   constructor() {
     const storedUser = localStorage.getItem('currentUser');
+    console.log(storedUser);
     if (storedUser) {
       this.currentUserSubject.next(JSON.parse(storedUser));
     }
@@ -33,7 +34,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): boolean {
-    const user = this.users.find(u => u.email === email && u.password === password);
+    const user = this.users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === password);
     if (user) {
       this.currentUserSubject.next(user);
       localStorage.setItem('currentUser', JSON.stringify(user));

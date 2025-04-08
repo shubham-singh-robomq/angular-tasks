@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TaskInputComponent } from '../task-input/task-input.component';
 
 interface Task {
   id: number;
@@ -9,6 +12,13 @@ interface Task {
 
 @Component({
   selector: 'app-task-list',
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TaskInputComponent
+  ],
   templateUrl: './task-list.component.html',
   styleUrls: ['./task-list.component.css']
 })
